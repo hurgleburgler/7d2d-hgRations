@@ -1,4 +1,5 @@
 <configs>
+
     <!-- Define our custom groups first -->
     <append xpath="/lootcontainers">
         <lootgroup name="hgDR_rations">
@@ -80,4 +81,28 @@
         <item name="resourcePowderedEggs" count="1,2" loot_prob_template="med"/>
         <item name="resourcePowderedCreamer" count="1,2" loot_prob_template="med"/>
     </append>
+
+    <!-- Add rare ingredients -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsRare']">
+        <item name="resourceFreezeDriedDicedMeat" count="1,3"/>
+        <item name="resourceFreezeDriedVegetableStew" count="1,2"/>
+        <item name="resourcePowderedEggs" count="2,4"/>
+        <item name="resourcePowderedMilk" count="2,4"/>
+    </append>
+
+    <!-- Add to food stores -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupFoodStore']">
+        <item name="resourceBoxOfRamen" count="1,3" loot_prob_template="high"/>
+        <item name="resourceFreezeDriedBlueberries" count="1,2" loot_prob_template="med"/>
+        <item name="resourceFreezeDriedPears" count="1,2" loot_prob_template="med"/>
+        <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
+        <item name="resourcePowderedCreamer" count="1,2" loot_prob_template="med"/>
+        <item group="hgDR_milk" loot_prob_template="high"/>
+    </append>
+
+    <!-- Add honey to survival medical -->
+    <append xpath="/lootcontainers/lootgroup[@name='survivalMedical']">
+        <item name="resourcePowderedHoney" loot_prob_template="veryLow"/>
+    </append>
+
 </configs>

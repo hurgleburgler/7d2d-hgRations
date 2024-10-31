@@ -1,5 +1,19 @@
 <hurgleburgler>
 
+    <!-- Add items to existing food groups -->
+    <append xpath="/traders/trader_item_groups/trader_item_group[@name='foodSupplies']">
+        <item name="resourcePowderedMilk" count="2,8"/>
+        <item name="resourcePowderedEggs" count="2,8"/>
+        <item name="resourceFreezeDriedDicedMeat" count="10,40"/>
+        <item name="resourcePowderedCreamer" count="2,8"/>
+        <item name="resourceFreezeDriedPotato" count="4,18"/>
+    </append>
+
+    <append xpath="/traders/trader_item_groups/trader_item_group[@name='preparedDrink']">
+        <item name="drinkJarMilk" count="1,2"/>
+        <item name="drinkJarCreamer" count="1,2"/>
+    </append>
+
     <append xpath="/traders/trader_item_groups/trader_item_group[@name='cannedfood']">
         <item name="drinkJarMilk"/>
         <item name="foodCanMilk"/>
@@ -13,11 +27,31 @@
         <item name="resourceFreezeDriedPotato"/>
         <item name="resourceFreezeDriedMushrooms"/>
         <item name="resourceFreezeDriedYuccaFruit"/>
+        <item name="resourceInstantCoffee"/>
         <item name="resourceFreezeDriedDicedMeat"/>
         <item name="resourceBoxOfRamen"/>
         <item name="resourceFreezeDriedPeas"/>
         <item name="resourceFreezeDriedPears"/>
-        <item name="resourceInstantCoffee"/>
+    </append>
+
+    <!-- Create specialized preserved food group -->
+    <append xpath="/traders/trader_item_groups">
+        <trader_item_group name="hgDR_preservedFood">
+            <item name="resourceFreezeDriedDicedMeat" count="10,40"/>
+            <item name="resourceFreezeDriedVegetableStew" count="5,20"/>
+            <item name="resourceFreezeDriedBlueberries" count="5,20"/>
+            <item name="resourceFreezeDriedPotato" count="4,18"/>
+            <item name="resourceFreezeDriedMushrooms" count="4,18"/>
+            <item name="resourceFreezeDriedYuccaFruit" count="4,18"/>
+            <item name="resourceFreezeDriedPeas" count="4,18"/>
+            <item name="resourceFreezeDriedPears" count="4,18"/>
+            <item name="resourceInstantCoffee" count="2,8"/>
+            <item name="resourceBoxOfRamen" count="5,20"/>
+            <item name="resourcePowderedMilk" count="2,8"/>
+            <item name="resourcePowderedEggs" count="2,8"/>
+            <item name="resourcePowderedHoney" count="1,4"/>
+            <item name="resourcePowderedCreamer" count="2,8"/>
+        </trader_item_group>
     </append>
 
 </hurgleburgler>
