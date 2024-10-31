@@ -1,0 +1,117 @@
+<hurgleburgler>
+
+    <append xpath="/recipes">
+
+        <!-- Milks -->
+        <recipe name="drinkJarMilk" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourcePowderedMilk" count="1" />
+            <ingredient name="drinkJarBoiledWater" count="5" />
+        </recipe>
+
+        <recipe name="foodCanMilk" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourcePowderedCreamer" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <recipe name="drinkJarCreamer" count="1" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="drinkJarMilk" count="2"/>
+            <ingredient name="drinkJarBoiledWater" count="1"/>
+        </recipe>
+
+        <!-- Ration Recipes -->
+        <recipe name="foodEgg" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourcePowderedEggs" count="1" />
+            <ingredient name="drinkJarBoiledWater" count="5" />
+        </recipe>
+
+        <recipe name="foodHoney" count="5" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourcePowderedHoney" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <recipe name="foodVegetableStew" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <recipe name="foodMeatStew" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+            <ingredient name="foodRawMeat" count="5"/>
+            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+            <ingredient name="resourceAnimalFat" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="1"/>
+            <effect_group>
+                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+            </effect_group>
+        </recipe>
+
+        <recipe name="foodHoboStew" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+            <ingredient name="foodRottingFlesh" count="5"/>
+            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+            <ingredient name="resourceAnimalFat" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="1"/>
+            <effect_group>
+                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+            </effect_group>
+        </recipe>
+
+        <recipe name="foodShamChowder" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+            <ingredient name="foodCanSham" count="5"/>
+            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="1"/>
+        </recipe>
+
+
+        <recipe name="foodCropPotato" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedPotato" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <recipe name="foodCropYuccaFruit" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <recipe name="drinkJarCoffee" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceInstantCoffee" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="10"/>
+        </recipe>
+
+        <recipe name="foodRawMeat" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <!-- Canned food Recipes finally -->
+
+        <recipe name="foodCanPasta" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceBoxOfRamen" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="10"/>
+            <ingredient name="drinkCanEmpty" count="10"/>
+        </recipe>
+
+        <recipe name="foodCanPeas" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedPeas" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+            <ingredient name="drinkCanEmpty" count="10"/>
+        </recipe>
+
+        <recipe name="foodCanPears" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedPears" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+            <ingredient name="drinkCanEmpty" count="10"/>
+        </recipe>
+
+        <recipe name="foodCanBeef" count="1" craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="foodBoiledMeat" count="5"/>
+            <ingredient name="drinkJarBoiledWater" count="1"/>
+            <ingredient name="drinkCanEmpty" count="1"/>
+        </recipe>
+
+        <recipe name="foodCropBlueberries" count="40"  craft_area="campfire" craft_tool="toolCookingPot">
+            <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+    </append>
+
+</hurgleburgler>

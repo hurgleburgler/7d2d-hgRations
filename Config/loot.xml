@@ -1,0 +1,79 @@
+<configs>
+
+    <!-- Set up loot groups -->
+    <prepend xpath="/lootcontainers">
+        <lootgroup name="hgDR_rations">
+            <item name="resourcePowderedMilk"/>
+            <item name="resourcePowderedEggs"/>
+            <item name="resourcePowderedHoney"/>
+            <item name="resourceFreezeDriedVegetableStew"/>
+            <item name="resourceFreezeDriedBlueberries"/>
+            <item name="resourceFreezeDriedPotato"/>
+            <item name="resourceFreezeDriedMushrooms"/>
+            <item name="resourceFreezeDriedYuccaFruit"/>
+            <item name="resourceInstantCoffee"/>
+            <item name="resourceFreezeDriedDicedMeat"/>
+            <item name="resourceBoxOfRamen"/>
+            <item name="resourceFreezeDriedPeas"/>
+            <item name="resourceFreezeDriedPears"/>
+            <item name="resourcePowderedCreamer"/>
+        </lootgroup>
+
+        <lootgroup name="hgDR_milk">
+            <item name="drinkJarMilk"/>
+            <item name="foodCanMilk"/>
+            <item name="drinkJarCreamer"/>
+        </lootgroup>
+    </prepend>
+
+    <!-- Additional Rations -->
+    <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsUncommon']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupFoodUncommon']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <!-- Milk stuff -->
+    <append xpath="/lootcontainers/lootgroup[@name='drinks']">
+        <item group="hgDR_milk"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupRefrigerator02']">
+        <item group="hgDR_milk"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupDrinksUncommon']">
+        <item group="hgDR_milk"/>
+    </append>
+
+    <!-- Additional Rations -->
+    <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsUncommon']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupFoodUncommon']">
+        <item group="hgDR_rations"/>
+    </append>
+
+    <!-- Coffee Machine -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupCoffeeMaker01']">
+        <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
+    </append>
+
+    <append xpath="/lootcontainers/lootgroup[@name='groupCoffeeMaker01']">
+        <item name="drinkJarCreamer" count="1" loot_prob_template="low"/>
+        <item name="resourcePowderedCreamer" count="1" loot_prob_template="med"/>
+        <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
+    </append>
+
+</configs>

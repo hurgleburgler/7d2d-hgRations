@@ -1,0 +1,84 @@
+<hurgleburgler>
+
+	<append xpath="/buffs">
+
+        <buff name="buffTooMuchCaffeine">
+            <damage_type value="Dehydration"/>
+            <stack_type value="duration"/>
+            <duration value="30"/>
+            <update_rate value="5"/>
+            <effect_group>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="1" effect_name="Distortion"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Distortion"/>
+
+                <triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="Player$Thirsty" play_in_head="true"/>
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="water" operation="subtract" value="5"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="buffFatiguedTriggered"/>
+            </effect_group>
+        </buff>
+
+        <buff name="buffCaffeine" name_key="drinkJarCoffee" description_key="drinkJarCoffeeDesc" icon="ui_game_symbol_coffee">
+            <stack_type value="replace"/>
+            <duration value="0"/>
+            <display_value value=".buffCaffeineDisplay"/>
+            <display_value_format value="time"/>
+
+            <effect_group>
+                <!-- Handle stacking with other coffee buffs -->
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="add" value="@$buffCoffeeBSDuration"/>
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="add" value="@$buffCoffeeDuration"/>
+                <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffBlackStrapCoffee"/>
+                <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffCoffee"/>
+
+                <!-- Duration cap check -->
+                <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="set" value="@$buffCaffeineDurationMax">
+                    <requirement name="CVarCompare" cvar="$buffCaffeineDuration" operation="GT" value="@$buffCaffeineDurationMax"/>
+                </triggered_effect>
+
+                <!-- Timer management -->
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="subtract" value="@$MetabolismDuration"/>
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffCaffeineDisplay" operation="set" value="@$buffCaffeineDuration"/>
+                <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffCaffeineDisplay" operation="divide" value="@$MetabolismDuration"/>
+            </effect_group>
+
+            <effect_group>
+                <!-- Buff removal and cleanup -->
+                <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffCaffeine">
+                    <requirement name="CVarCompare" cvar="$buffCaffeineDuration" operation="LTE" value="0"/>
+                </triggered_effect>
+
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffCaffeineDisplay" operation="set" value="0"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="set" value="0"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffCaffeineStaminaRegen" operation="set" value="0"/>
+                <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffCaffeineDehydration" operation="set" value="0"/>
+            </effect_group>
+
+            <effect_group>
+                <!-- Stamina effects with water healing consideration -->
+                <passive_effect name="StaminaChangeOT" operation="perc_add" value="@$buffCaffeineStaminaRegen">
+                    <requirement name="!HasBuff" buff="buffHealWaterMax"/>
+                </passive_effect>
+
+                <passive_effect name="StaminaChangeOT" operation="perc_add" value="0.1">
+                    <requirement name="HasBuff" buff="buffHealWaterMax"/>
+                </passive_effect>
+
+                <!-- Dehydration effect -->
+                <passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="@$buffCaffeineDehydration"/>
+            </effect_group>
+        </buff>
+    </append>
+
+    <append xpath="/buffs/buff[@name='god']/effect_group">
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffCaffeineDuration" operation="set" value="0"/>
+    </append>
+
+    <insertAfter xpath="/buffs/buff[@name='buffBlackStrapCoffee']/effect_group/triggered_effect[@action='RemoveBuff' and @buff='buffCoffee']">
+        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="$buffCaffeineDuration"/>
+    </insertAfter>
+
+    <insertAfter xpath="/buffs/buff[@name='buffCoffee']/effect_group/triggered_effect[@action='RemoveBuff' and @buff='buffBlackStrapCoffee']">
+        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="$buffCaffeineDuration"/>
+    </insertAfter>
+
+</hurgleburgler>

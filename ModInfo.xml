@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value="Hurgleburgler's Dried Rations Mod" />
+		<Description value="Expands the rations available in the apocalypse." />
+		<Author value="hurgleburgler"/>
+		<Version value="A20" />
+		<Website value="https://www.webandwhimsy.com/" />
+	</ModInfo>
+</xml>

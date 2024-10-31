@@ -1,0 +1,23 @@
+<hurgleburgler>
+
+    <append xpath="/traders/trader_item_groups/trader_item_group[@name='cannedfood']">
+        <item name="drinkJarMilk"/>
+        <item name="foodCanMilk"/>
+        <item name="drinkJarCreamer"/>
+        <item name="resourcePowderedMilk"/>
+        <item name="resourcePowderedCreamer"/>
+        <item name="resourcePowderedEggs"/>
+        <item name="resourcePowderedHoney"/>
+        <item name="resourceFreezeDriedVegetableStew"/>
+        <item name="resourceFreezeDriedBlueberries"/>
+        <item name="resourceFreezeDriedPotato"/>
+        <item name="resourceFreezeDriedMushrooms"/>
+        <item name="resourceFreezeDriedYuccaFruit"/>
+        <item name="resourceFreezeDriedDicedMeat"/>
+        <item name="resourceBoxOfRamen"/>
+        <item name="resourceFreezeDriedPeas"/>
+        <item name="resourceFreezeDriedPears"/>
+        <item name="resourceInstantCoffee"/>
+    </append>
+
+</hurgleburgler>
