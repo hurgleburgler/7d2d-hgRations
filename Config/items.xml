@@ -1,30 +1,18 @@
 <hurgleburgler>
 
     <append xpath="/items">
-<!--        &lt;!&ndash; Modify stats directly &ndash;&gt;-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="-10"/>-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="stamina" operation="add" value="-80"/>-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="food" operation="add" value="-80"/>-->
+        <!-- Item Container Standards:
+            - Glass Jars: Return drinkJarEmpty (milk, creamer)
+            - Metal Cans: Return drinkCanEmpty (powdered milk, eggs, instant coffee, etc.)
+            - Bags/Boxes: No container return (freeze-dried fruits, vegetables, ramen)
+            - Plastic Containers: No container return (freeze-dried meats, some vegetables)
+        -->
 
-<!--        &lt;!&ndash; Seconds to food regen &ndash;&gt;-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>-->
-<!--        &lt;!&ndash; Seconds to water regen &ndash;&gt;-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="50"/>-->
-<!--        &lt;!&ndash; Seconds to health regen &ndash;&gt;-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="50"/>-->
+        <!-- =============== -->
+        <!-- Base Items      -->
+        <!-- =============== -->
 
-<!--        &lt;!&ndash; Add the Max Food Stamina Bonus, via buffFoodStaminaBonus (buffProcessConsumables). The duration is always 7m. &ndash;&gt;-->
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="-1"/>-->
-
-<!--        &lt;!&ndash; Don't forget to set the display stuff for use by ui_display.xml &ndash;&gt;-->
-<!--        <display_value name="dStaminaRegen" value=".24"/>-->
-<!--        <display_value name="dHypothermalResist" value="9"/>-->
-<!--        <display_value name="dDuration" value="359"/>-->
-
-<!--        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>-->
-
-        <!-- Milk stuff! -->
+        <!-- Base class for milk products - inherits glass jar properties -->
         <item name="hgDR_milkBase">
             <property name="Tags" value="food"/>
             <property name="HoldType" value="3"/>
@@ -40,6 +28,34 @@
             </property>
         </item>
 
+        <!-- Base class for dry/preserved foods - inherits basic food properties -->
+        <item name="hgDR_rationBase">
+            <property name="HoldType" value="31"/>
+            <property name="DisplayType" value="hgDR_rationBase"/>
+            <property name="Meshfile" value="#Other/Items?Misc/parcelPrefab.prefab"/>
+            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+            <property name="Material" value="MresourceCrop"/>
+            <property name="FuelValue" value="5"/>
+            <property name="EconomicValue" value="100"/>
+            <property name="Stacknumber" value="50"/>
+
+            <property name="EconomicValue" value="20"/>
+            <property name="CraftingIngredientTime" value="15"/>
+            <property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+
+            <property class="Action0">
+                <property name="Class" value="Eat"/>
+                <property name="Delay" value="1"/>
+                <property name="Use_time" value="..."/>
+                <property name="Sound_start" value="player_eating"/>
+            </property>
+        </item>
+
+        <!-- =============== -->
+        <!-- Jarred Products -->
+        <!-- =============== -->
+
+        <!-- Milk in glass jar - returns drinkJarEmpty -->
         <item name="drinkJarMilk">
             <property name="CustomIcon" value="drinkJarMilk_160"/>
             <property name="Extends" value="hgDR_milkBase"/>
@@ -65,6 +81,32 @@
             </effect_group>
         </item>
 
+        <!-- Creamer in glass jar - returns drinkJarEmpty -->
+        <item name="drinkJarCreamer">
+            <property name="CustomIcon" value="drinkJarCreamer_160"/>
+            <property name="Extends" value="hgDR_milkBase"/>
+
+            <property class="Action0">
+                <property name="Create_item" value="drinkJarEmpty"/>
+            </property>
+
+            <effect_group tiered="false" name="Drink Tier Found">
+                <display_value name="dFoodAmountAdd" value="10"/>
+                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dWaterAmountAdd" value="5"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- ================ -->
+        <!-- Canned Products -->
+        <!-- ================ -->
+
+        <!-- Evaporated milk in can - returns drinkCanEmpty -->
         <item name="foodCanMilk">
             <property name="CustomIcon" value="foodCanMilk_160"/>
             <property name="Extends" value="hgDR_milkBase"/>
@@ -90,52 +132,15 @@
             </effect_group>
         </item>
 
-        <item name="drinkJarCreamer">
-            <property name="CustomIcon" value="drinkJarCreamer_160"/>
-            <property name="Extends" value="hgDR_milkBase"/>
-
-            <property class="Action0">
-                <property name="Create_item" value="drinkJarEmpty"/>
-            </property>
-
-            <effect_group tiered="false" name="Drink Tier Found">
-                <display_value name="dFoodAmountAdd" value="10"/>
-                <display_value name="dFoodHealthAmount" value="5"/>
-                <display_value name="dWaterAmountAdd" value="5"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <item name="hgDR_rationBase">
-            <property name="HoldType" value="31"/>
-            <property name="DisplayType" value="hgDR_rationBase"/>
-            <property name="Meshfile" value="#Other/Items?Misc/parcelPrefab.prefab"/>
-            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
-            <property name="Material" value="MresourceCrop"/>
-            <property name="FuelValue" value="5"/>
-            <property name="EconomicValue" value="100"/>
-            <property name="Stacknumber" value="50"/>
-
-            <property name="EconomicValue" value="20"/>
-            <property name="CraftingIngredientTime" value="15"/>
-            <property name="Group" value="Food/Cooking,CFFood/Cooking"/>
-
-            <property class="Action0">
-                <property name="Class" value="Eat"/>
-                <property name="Delay" value="1"/>
-                <property name="Use_time" value="..."/>
-                <property name="Sound_start" value="player_eating"/>
-            </property>
-        </item>
-
+        <!-- Powdered milk in can - returns drinkCanEmpty -->
         <item name="resourcePowderedMilk">
             <property name="Extends" value="hgDR_rationBase"/>
             <property name="CustomIcon" value="resourcePowderedMilk_160"/>
 
+            <property class="Action0">
+                <property name="Create_item" value="drinkCanEmpty"/>
+            </property>
+
             <effect_group tiered="false">
                 <display_value name="dFoodAmountAdd" value="20"/>
                 <display_value name="dFoodHealthAmount" value="10"/>
@@ -146,92 +151,16 @@
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
             </effect_group>
-
-            <property class="Action0">
-                <property name="Create_item" value="drinkCanEmpty"/>
-            </property>
         </item>
 
-        <item name="resourcePowderedCreamer">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourcePowderedCreamer_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="40"/>
-                <display_value name="dFoodHealthAmount" value="5"/>
-                <display_value name="dWaterAmountAdd" value="-40"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-40"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="40"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
+        <!-- Powdered eggs in can - returns drinkCanEmpty -->
         <item name="resourcePowderedEggs">
             <property name="Extends" value="hgDR_rationBase"/>
             <property name="CustomIcon" value="resourcePowderedEggs_160"/>
 
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="20"/>
-                <display_value name="dFoodHealthAmount" value="10"/>
-                <display_value name="dWaterAmountAdd" value="-20"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-
             <property class="Action0">
                 <property name="Create_item" value="drinkCanEmpty"/>
             </property>
-        </item>
-
-        <item name="resourcePowderedHoney">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourcePowderedHoney_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="30"/>
-                <display_value name="dFoodHealthAmount" value="15"/>
-                <display_value name="dWaterAmountAdd" value="-30"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-
-            <property class="Action0">
-                <property name="Create_item" value="drinkCanEmpty"/>
-            </property>
-        </item>
-
-        <item name="resourceFreezeDriedVegetableStew">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedVegetableStew_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="10"/>
-                <display_value name="dFoodHealthAmount" value="10"/>
-                <display_value name="dWaterAmountAdd" value="-10"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-
-            <property class="Action0">
-                <property name="Create_item" value="drinkCanEmpty"/>
-            </property>
-        </item>
-
-        <!-- foodCropBlueberries -->
-        <item name="resourceFreezeDriedBlueberries">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedBlueberries_160"/>
 
             <effect_group tiered="false">
                 <display_value name="dFoodAmountAdd" value="20"/>
@@ -245,129 +174,28 @@
             </effect_group>
         </item>
 
-        <!-- foodCropPotato -->
+        <!-- Instant potatoes in can - returns drinkCanEmpty -->
         <item name="resourceFreezeDriedPotato">
             <property name="Extends" value="hgDR_rationBase"/>
             <property name="CustomIcon" value="resourceFreezeDriedPotato_160"/>
 
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="30"/>
-                <display_value name="dFoodHealthAmount" value="-5"/>
-                <display_value name="dWaterAmountAdd" value="-30"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-
             <property class="Action0">
                 <property name="Create_item" value="drinkCanEmpty"/>
             </property>
-        </item>
-
-        <!-- foodCropMushrooms -->
-        <item name="resourceFreezeDriedMushrooms">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedMushrooms_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="10"/>
-                <display_value name="dFoodHealthAmount" value="5"/>
-                <display_value name="dWaterAmountAdd" value="-10"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <!-- foodCropYuccaFruit -->
-        <item name="resourceFreezeDriedYuccaFruit">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedYuccaFruit_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="15"/>
-                <display_value name="dFoodHealthAmount" value="5"/>
-                <display_value name="dWaterAmountAdd" value="-15"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-15"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <item name="resourceFreezeDriedDicedMeat">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedDicedMeat_160"/>
 
             <effect_group tiered="false">
                 <display_value name="dFoodAmountAdd" value="30"/>
-                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dFoodHealthAmount" value="-5"/>
                 <display_value name="dWaterAmountAdd" value="-30"/>
 
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <!-- Canned foods -->
-        <item name="resourceBoxOfRamen">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceBoxOfRamen_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="20"/>
-                <display_value name="dFoodHealthAmount" value="-5"/>
-                <display_value name="$waterAmountAdd" value="-30"/>
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5"/>
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
             </effect_group>
         </item>
 
-        <item name="resourceFreezeDriedPeas">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedPeas_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="25"/>
-                <display_value name="dFoodHealthAmount" value="20"/>
-                <display_value name="$waterAmountAdd" value="-25" />
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-25"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="25"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <item name="resourceFreezeDriedPears">
-            <property name="Extends" value="hgDR_rationBase"/>
-            <property name="CustomIcon" value="resourceFreezeDriedPears_160"/>
-
-            <effect_group tiered="false">
-                <display_value name="dFoodAmountAdd" value="20"/>
-                <display_value name="dFoodHealthAmount" value="20"/>
-                <display_value name="$waterAmountAdd" value="-20" />
-
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
-                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-            </effect_group>
-        </item>
-
-        <!-- Instant Coffee - Powerful stimulant with harsh side effects -->
-        <!-- Duration: 180s, Stamina: 50% -->
-        <!-- Unique: High dehydration rate and TooMuchCaffeine debuff -->
+        <!-- Special canned coffee with unique buff effects - returns drinkCanEmpty -->
         <item name="resourceInstantCoffee">
             <property name="Extends" value="hgDR_rationBase"/>
             <property name="CustomIcon" value="resourceInstantCoffee_160"/>
@@ -376,7 +204,7 @@
             <property class="Action0">
                 <property name="Class" value="Eat"/>
                 <property name="Delay" value="1"/>
-                <property name="Use_time" value="10"/>
+                <property name="Use_time" value="..."/>
                 <property name="Sound_start" value="player_eating"/>
                 <property name="Create_item" value="drinkCanEmpty"/>
             </property>
@@ -399,6 +227,192 @@
 
                 <!-- Add buffs -->
                 <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffCaffeine,buffTooMuchCaffeine"/>
+            </effect_group>
+        </item>
+
+        <!-- ======================= -->
+        <!-- Plastic Container Items -->
+        <!-- ======================= -->
+
+        <!-- Freeze-dried meat in plastic tray - no container return -->
+        <item name="resourceFreezeDriedDicedMeat">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedDicedMeat_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="30"/>
+                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dWaterAmountAdd" value="-30"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Freeze-dried mushrooms in plastic container - no container return -->
+        <item name="resourceFreezeDriedMushrooms">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedMushrooms_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="10"/>
+                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dWaterAmountAdd" value="-10"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Freeze-dried vegetable stew in plastic container - no container return -->
+        <item name="resourceFreezeDriedVegetableStew">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedVegetableStew_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="10"/>
+                <display_value name="dFoodHealthAmount" value="10"/>
+                <display_value name="dWaterAmountAdd" value="-10"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Freeze-dried yucca in plastic container - no container return -->
+        <item name="resourceFreezeDriedYuccaFruit">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedYuccaFruit_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="15"/>
+                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dWaterAmountAdd" value="-15"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-15"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Powdered creamer in plastic container - no container return -->
+        <item name="resourcePowderedCreamer">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourcePowderedCreamer_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="40"/>
+                <display_value name="dFoodHealthAmount" value="5"/>
+                <display_value name="dWaterAmountAdd" value="-40"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-40"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="40"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- ================ -->
+        <!-- Bagged Products -->
+        <!-- ================ -->
+
+        <!-- Freeze-dried blueberries in sealed bag - no container return -->
+        <item name="resourceFreezeDriedBlueberries">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedBlueberries_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="20"/>
+                <display_value name="dFoodHealthAmount" value="10"/>
+                <display_value name="dWaterAmountAdd" value="-20"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Freeze-dried pears in sealed bag - no container return -->
+        <item name="resourceFreezeDriedPears">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedPears_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="20"/>
+                <display_value name="dFoodHealthAmount" value="20"/>
+                <display_value name="dWaterAmountAdd" value="-20"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- Freeze-dried peas in sealed bag - no container return -->
+        <item name="resourceFreezeDriedPeas">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceFreezeDriedPeas_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="25"/>
+                <display_value name="dFoodHealthAmount" value="20"/>
+                <display_value name="dWaterAmountAdd" value="-25"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-25"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="25"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- ================ -->
+        <!-- Boxed Products  -->
+        <!-- ================ -->
+
+        <!-- Ramen in cardboard box - no container return -->
+        <item name="resourceBoxOfRamen">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourceBoxOfRamen_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="20"/>
+                <display_value name="dFoodHealthAmount" value="-5"/>
+                <display_value name="dWaterAmountAdd" value="-30"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+            </effect_group>
+        </item>
+
+        <!-- ===================== -->
+        <!-- Special Containers   -->
+        <!-- ===================== -->
+
+        <!-- Honey in decorative tin - no container return -->
+        <item name="resourcePowderedHoney">
+            <property name="Extends" value="hgDR_rationBase"/>
+            <property name="CustomIcon" value="resourcePowderedHoney_160"/>
+
+            <effect_group tiered="false">
+                <display_value name="dFoodAmountAdd" value="30"/>
+                <display_value name="dFoodHealthAmount" value="15"/>
+                <display_value name="dWaterAmountAdd" value="-30"/>
+
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
+                <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
             </effect_group>
         </item>
 

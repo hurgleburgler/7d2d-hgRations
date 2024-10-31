@@ -1,19 +1,19 @@
 <hurgleburgler>
 	<append xpath="/ui_display_info/item_display">
 
-		<item_display_info display_type="hgMR_milkBase" display_group="groupConsumables">
+		<item_display_info display_type="hgDR_milkBase" display_group="groupConsumables">
 			<display_entry name="dFoodAmountAdd" title_key="statWaterAmount"/>
 			<display_entry name="dFoodHealthAmount" title_key="statHealthAmount"/>
 			<display_entry name="dWaterAmountAdd" title_key="statWaterAmount"/>
 		</item_display_info>
 
-		<item_display_info display_type="hgMR_rationBase" display_group="groupConsumables">
+		<item_display_info display_type="hgDR_rationBase" display_group="groupConsumables">
 			<display_entry name="dFoodAmountAdd" title_key="statFoodAmount"/>
 			<display_entry name="dFoodHealthAmount" title_key="statHealthAmount"/>
 			<display_entry name="dWaterAmountAdd" title_key="statWaterAmount"/>
 		</item_display_info>
 
-		<item_display_info display_type="hgMR_instantCoffee" display_group="groupConsumables">
+		<item_display_info display_type="hgDR_instantCoffee" display_group="groupConsumables">
 			<display_entry name="dWaterAmountAdd" title_key="statWaterAmount"/>
 			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>
 			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>

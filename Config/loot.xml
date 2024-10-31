@@ -1,45 +1,55 @@
 <configs>
-
-    <!-- Set up loot groups -->
-    <prepend xpath="/lootcontainers">
+    <!-- Define our custom groups first -->
+    <append xpath="/lootcontainers">
         <lootgroup name="hgDR_rations">
-            <item name="resourcePowderedMilk"/>
-            <item name="resourcePowderedEggs"/>
-            <item name="resourcePowderedHoney"/>
-            <item name="resourceFreezeDriedVegetableStew"/>
-            <item name="resourceFreezeDriedBlueberries"/>
-            <item name="resourceFreezeDriedPotato"/>
-            <item name="resourceFreezeDriedMushrooms"/>
-            <item name="resourceFreezeDriedYuccaFruit"/>
-            <item name="resourceInstantCoffee"/>
-            <item name="resourceFreezeDriedDicedMeat"/>
-            <item name="resourceBoxOfRamen"/>
-            <item name="resourceFreezeDriedPeas"/>
-            <item name="resourceFreezeDriedPears"/>
-            <item name="resourcePowderedCreamer"/>
+            <item name="resourcePowderedMilk" count="1,2" loot_prob_template="med"/>
+            <item name="resourcePowderedEggs" count="1,2" loot_prob_template="med"/>
+            <item name="resourcePowderedHoney" count="1,2" loot_prob_template="low"/>
+            <item name="resourceFreezeDriedVegetableStew" count="1,2" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedBlueberries" count="1,2" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedPotato" count="1,2" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedMushrooms" count="1,2" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedYuccaFruit" count="1,2" loot_prob_template="med"/>
+            <item name="resourceInstantCoffee" count="1" loot_prob_template="low"/>
+            <item name="resourceFreezeDriedDicedMeat" count="1,2" loot_prob_template="low"/>
+            <item name="resourceBoxOfRamen" count="1,2" loot_prob_template="high"/>
+            <item name="resourceFreezeDriedPeas" count="1,2" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedPears" count="1,2" loot_prob_template="med"/>
+            <item name="resourcePowderedCreamer" count="1,2" loot_prob_template="med"/>
         </lootgroup>
 
         <lootgroup name="hgDR_milk">
-            <item name="drinkJarMilk"/>
-            <item name="foodCanMilk"/>
-            <item name="drinkJarCreamer"/>
+            <item name="drinkJarMilk" count="1" loot_prob_template="high"/>
+            <item name="foodCanMilk" count="1" loot_prob_template="med"/>
+            <item name="drinkJarCreamer" count="1" loot_prob_template="low"/>
         </lootgroup>
-    </prepend>
 
-    <!-- Additional Rations -->
+        <!-- Military/Survival focused ration group -->
+        <lootgroup name="hgDR_militaryRations">
+            <item name="resourceFreezeDriedDicedMeat" count="1,3" loot_prob_template="med"/>
+            <item name="resourceFreezeDriedVegetableStew" count="1,3" loot_prob_template="high"/>
+            <item name="resourceFreezeDriedPotato" count="1,3" loot_prob_template="high"/>
+            <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
+        </lootgroup>
+    </append>
+
+    <!-- Add rations to relevant base game groups -->
     <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
         <item group="hgDR_rations"/>
     </append>
 
     <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsUncommon']">
-        <item group="hgDR_rations"/>
+        <item name="resourceFreezeDriedDicedMeat" count="1,3"/>
+        <item name="resourceFreezeDriedVegetableStew" count="1,3"/>
+        <item name="resourcePowderedMilk" count="1,3"/>
+        <item name="resourcePowderedEggs" count="1,3"/>
     </append>
 
-    <append xpath="/lootcontainers/lootgroup[@name='groupFoodUncommon']">
-        <item group="hgDR_rations"/>
+    <append xpath="/lootcontainers/lootgroup[@name='groupFoodTrash']">
+        <item name="resourceFreezeDriedPotato" loot_prob_template="low"/>
     </append>
 
-    <!-- Milk stuff -->
+    <!-- Add milk products to drink groups -->
     <append xpath="/lootcontainers/lootgroup[@name='drinks']">
         <item group="hgDR_milk"/>
     </append>
@@ -52,28 +62,22 @@
         <item group="hgDR_milk"/>
     </append>
 
-    <!-- Additional Rations -->
-    <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
-        <item group="hgDR_rations"/>
+    <!-- Add to military/survival locations -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupArmyTruck01']">
+        <item group="hgDR_militaryRations" loot_prob_template="high"/>
     </append>
 
-    <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsUncommon']">
-        <item group="hgDR_rations"/>
-    </append>
-
-    <append xpath="/lootcontainers/lootgroup[@name='groupFoodUncommon']">
-        <item group="hgDR_rations"/>
-    </append>
-
-    <!-- Coffee Machine -->
+    <!-- Add to POI-specific locations -->
     <append xpath="/lootcontainers/lootgroup[@name='groupCoffeeMaker01']">
         <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
-    </append>
-
-    <append xpath="/lootcontainers/lootgroup[@name='groupCoffeeMaker01']">
         <item name="drinkJarCreamer" count="1" loot_prob_template="low"/>
         <item name="resourcePowderedCreamer" count="1" loot_prob_template="med"/>
-        <item name="resourceInstantCoffee" count="1,2" loot_prob_template="med"/>
     </append>
 
+    <!-- Add to kitchen/cooking locations -->
+    <append xpath="/lootcontainers/lootgroup[@name='groupCookingTools']">
+        <item name="resourcePowderedMilk" count="1,2" loot_prob_template="med"/>
+        <item name="resourcePowderedEggs" count="1,2" loot_prob_template="med"/>
+        <item name="resourcePowderedCreamer" count="1,2" loot_prob_template="med"/>
+    </append>
 </configs>

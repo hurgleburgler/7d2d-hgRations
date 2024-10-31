@@ -74,11 +74,11 @@
     </append>
 
     <insertAfter xpath="/buffs/buff[@name='buffBlackStrapCoffee']/effect_group/triggered_effect[@action='RemoveBuff' and @buff='buffCoffee']">
-        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="$buffCaffeineDuration"/>
+        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffCaffeine"/>
     </insertAfter>
 
     <insertAfter xpath="/buffs/buff[@name='buffCoffee']/effect_group/triggered_effect[@action='RemoveBuff' and @buff='buffBlackStrapCoffee']">
-        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="$buffCaffeineDuration"/>
+        <triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffCaffeine"/>
     </insertAfter>
 
 </hurgleburgler>
