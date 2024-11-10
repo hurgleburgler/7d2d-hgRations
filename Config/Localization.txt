@@ -1,5 +1,6 @@
 Key,Source,Context,English
 hgDR_resourceRations,items,Item,"This is a base item for development only"
+eatDryRationsTooltip,items,Admin,"The thirst is worse than the horde."
 resourcePowderedEggs,items,Item,"Powdered Eggs"
 resourcePowderedEggsDesc,items,Item,"Rehydrate with water to make an egg-like scramble. It’s not exactly fresh, but it’ll do in a pinch!"
 resourcePowderedHoney,items,Item,"Powdered Honey"
@@ -23,9 +24,5 @@ resourceFreezeDriedPeasDesc,items,Item,"Just add water to get tender peas. A hea
 resourceFreezeDriedPears,items,Item,"Freeze-Dried Pears"
 resourceFreezeDriedPearsDesc,items,Item,"Add water for sweet, juicy pears. Crunchy and light when dry, but a refreshing treat when rehydrated."
 statMaxDuration,ui_display,Item stat,"Max Duration"
-buffTooMuchCaffeine,buffs,Buff,"Too Much Caffeine"
-buffTooMuchCaffeineDesc,buffs,Buff,"Your hands are shaking and your heart is racing. Increased dehydration and disorientation."
-buffCaffeine,buffs,Buff,"Caffeinated"
-buffCaffeineDesc,buffs,Buff,"Increased stamina regeneration at the cost of increased dehydration."
 dFoodAmountAdd,ui_display,Stat Description,"Food Value"
 dWaterAmountAdd,ui_display,Stat Description,"Hydration Value"

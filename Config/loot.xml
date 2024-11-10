@@ -65,4 +65,9 @@
     <item name="resourcePowderedHoney" loot_prob_template="low"/>
   </append>
 
+    <!-- Add honey to quest reward medical -->
+  <append xpath="/lootcontainers/lootgroup[@name='groupQuestMedical']">
+    <item name="resourcePowderedHoney" loot_prob_template="low"/>
+  </append>
+
 </configs>
