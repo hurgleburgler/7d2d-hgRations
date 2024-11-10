@@ -22,7 +22,6 @@
       <property name="EconomicValue" value="100"/>
       <property name="Stacknumber" value="50"/>
 
-      <property name="EconomicValue" value="20"/>
       <property name="CraftingIngredientTime" value="15"/>
       <property name="Group" value="Food/Cooking,CFFood/Cooking"/>
 
@@ -70,13 +69,13 @@
       </property>
 
       <effect_group tiered="false">
-        <display_value name="dFoodAmountAdd" value="60"/>
+        <display_value name="dFoodAmountAdd" value="40"/>
         <display_value name="dFoodHealthAmount" value="-5"/>
         <display_value name="dWaterAmountAdd" value="-30"/>
 
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="eatDryRationsTooltip"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-30"/>
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="60"/>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="40"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="-5"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
       </effect_group>
@@ -110,13 +109,13 @@
       <property name="CustomIcon" value="resourceFreezeDriedMushrooms_160"/>
 
       <effect_group tiered="false">
-        <display_value name="dFoodAmountAdd" value="10"/>
+        <display_value name="dFoodAmountAdd" value="20"/>
         <display_value name="dFoodHealthAmount" value="5"/>
         <display_value name="dWaterAmountAdd" value="-10"/>
 
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="eatDryRationsTooltip"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
       </effect_group>
@@ -128,13 +127,13 @@
       <property name="CustomIcon" value="resourceFreezeDriedVegetableStew_160"/>
 
       <effect_group tiered="false">
-        <display_value name="dFoodAmountAdd" value="10"/>
+        <display_value name="dFoodAmountAdd" value="20"/>
         <display_value name="dFoodHealthAmount" value="10"/>
         <display_value name="dWaterAmountAdd" value="-10"/>
 
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="eatDryRationsTooltip"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-10"/>
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
       </effect_group>
@@ -187,13 +186,13 @@
 
       <effect_group tiered="false">
         <display_value name="dFoodAmountAdd" value="20"/>
-        <display_value name="dFoodHealthAmount" value="20"/>
+        <display_value name="dFoodHealthAmount" value="15"/>
         <display_value name="dWaterAmountAdd" value="-20"/>
 
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="eatDryRationsTooltip"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-20"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
       </effect_group>
     </item>
@@ -205,13 +204,13 @@
 
       <effect_group tiered="false">
         <display_value name="dFoodAmountAdd" value="25"/>
-        <display_value name="dFoodHealthAmount" value="20"/>
+        <display_value name="dFoodHealthAmount" value="15"/>
         <display_value name="dWaterAmountAdd" value="-25"/>
 
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="eatDryRationsTooltip"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-25"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="25"/>
-        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+        <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
       </effect_group>
     </item>
