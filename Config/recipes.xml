@@ -14,19 +14,19 @@
         <!-- ================ -->
 
         <!-- Basic eggs: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodEgg" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodEgg" count="10">
             <ingredient name="resourcePowderedEggs" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
 
         <!-- Honey: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodHoney" count="5" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodHoney" count="5">
             <ingredient name="resourcePowderedHoney" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
 
         <!-- Raw meat: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodRawMeat" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodRawMeat" count="10">
             <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
@@ -36,20 +36,26 @@
         <!-- ================ -->
 
         <!-- Potato: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropPotato" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCropPotato" count="20">
             <ingredient name="resourceFreezeDriedPotato" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
 
         <!-- Yucca: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropYuccaFruit" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCropYuccaFruit" count="20">
             <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
 
         <!-- Blueberries: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropBlueberries" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCropBlueberries" count="20">
             <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
+        </recipe>
+
+        <!-- Mushrooms: 5 water → 20 items (1:4 ratio for crops) -->
+        <recipe name="foodCropMushrooms" count="20">
+            <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
         </recipe>
 
@@ -58,21 +64,21 @@
         <!-- ================ -->
 
         <!-- Canned pasta: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPasta" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCanPasta" count="10">
             <ingredient name="resourceBoxOfRamen" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
             <ingredient name="drinkCanEmpty" count="10"/>
         </recipe>
 
         <!-- Canned peas: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPeas" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCanPeas" count="10">
             <ingredient name="resourceFreezeDriedPeas" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
             <ingredient name="drinkCanEmpty" count="10"/>
         </recipe>
 
         <!-- Canned pears: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPears" count="10" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodCanPears" count="10">
             <ingredient name="resourceFreezeDriedPears" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
             <ingredient name="drinkCanEmpty" count="10"/>
@@ -83,22 +89,28 @@
         <!-- ================ -->
 
         <!-- Basic rehydrated vegetable stew: 5 water → 20 items (1:4 ratio) -->
-        <recipe name="foodVegetableStew" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodVegetableStew" count="20" tags="perkMasterChef,learnable">
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
+            <effect_group>
+                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+            </effect_group>
         </recipe>
 
         <!-- Basic rehydrated meat stew: 5 water → 20 items (1:4 ratio to match other dehydrated foods) -->
-        <recipe name="foodMeatStew" count="20" craft_area="campfire" craft_tool="toolCookingPot">
+        <recipe name="foodMeatStew" count="20" tags="perkMasterChef,learnable">
+            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="5"/>
+            <effect_group>
+                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+            </effect_group>
         </recipe>
 
         <!-- Complex meat stew recipe: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodMeatStew" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
-            <ingredient name="foodRawMeat" count="5"/>
+        <recipe name="foodMeatStew" count="5" tags="perkMasterChef,learnable">
+            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="resourceAnimalFat" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="1"/>
             <effect_group>
                 <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
@@ -106,7 +118,7 @@
         </recipe>
 
         <!-- Hobo stew: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodHoboStew" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+        <recipe name="foodHoboStew" count="5" tags="perkMasterChef,learnable">
             <ingredient name="foodRottingFlesh" count="5"/>
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
             <ingredient name="resourceAnimalFat" count="1"/>
@@ -117,10 +129,13 @@
         </recipe>
 
         <!-- Sham chowder: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodShamChowder" count="5" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+        <recipe name="foodShamChowder" count="5" tags="perkMasterChef,learnable">
             <ingredient name="foodCanSham" count="5"/>
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
             <ingredient name="drinkJarBoiledWater" count="1"/>
+            <effect_group>
+                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+            </effect_group>
         </recipe>
     </append>
 
