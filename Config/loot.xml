@@ -3,7 +3,7 @@
   <!-- Define our custom groups first -->
   <insertAfter xpath="/lootcontainers/lootgroup[@name='empty']">
 
-    <lootgroup name="hgDR_rations">
+    <lootgroup name="groupFoodDriedRations">
       <item name="resourcePowderedEggs" count="1" loot_prob_template="med"/>
       <item name="resourcePowderedHoney" count="1" loot_prob_template="low"/>
       <item name="resourceFreezeDriedVegetableStew" count="1" loot_prob_template="med"/>
@@ -17,15 +17,11 @@
       <item name="resourceFreezeDriedPears" count="1" loot_prob_template="med"/>
     </lootgroup>
 
-    <!-- Military/Survival focused ration group -->
-    <lootgroup name="hgDR_militaryRations">
-      <item group="hgDR_rations" loot_prob_template="high"/>
-    </lootgroup>
   </insertAfter>
 
   <!-- Add rations to relevant base game groups -->
   <append xpath="/lootcontainers/lootgroup[@name='cannedfood']">
-    <item group="hgDR_rations"/>
+    <item group="groupFoodDriedRations"/>
   </append>
 
   <append xpath="/lootcontainers/lootgroup[@name='groupIngredientsUncommon']">
@@ -36,11 +32,12 @@
 
   <append xpath="/lootcontainers/lootgroup[@name='groupFoodTrash']">
     <item name="resourceFreezeDriedPotato" loot_prob_template="low"/>
+    <item name="resourceFreezeDriedYuccaFruit" loot_prob_template="med"/>
   </append>
 
   <!-- Add to military/survival locations -->
   <append xpath="/lootcontainers/lootgroup[@name='groupArmyTruck01']">
-    <item group="hgDR_militaryRations" loot_prob_template="high"/>
+    <item group="groupFoodDriedRations" count="1,2"/>
   </append>
 
   <!-- Add to kitchen/cooking locations -->
@@ -55,9 +52,14 @@
     <item name="resourcePowderedEggs" count="2,4"/>
   </append>
 
+    <!-- Add to food crates -->
+  <append xpath="/lootcontainers/lootgroup[@name='groupShamwayCrate']">
+    <item group="groupFoodDriedRations" count="1,3"/>
+  </append>
+
   <!-- Add to food stores -->
   <append xpath="/lootcontainers/lootgroup[@name='groupShamwayShelves']">
-    <item group="hgDR_rations" loot_prob_template="med"/>
+    <item group="groupFoodDriedRations" loot_prob_template="med"/>
   </append>
 
   <!-- Add honey to survival medical -->
@@ -68,6 +70,22 @@
     <!-- Add honey to quest reward medical -->
   <append xpath="/lootcontainers/lootgroup[@name='groupQuestMedical']">
     <item name="resourcePowderedHoney" loot_prob_template="low"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupBuriedSuppliesT1']">
+    <item group="groupFoodDriedRations"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootgroup[@name='groupBuriedTreasure']">
+    <item group="groupFoodDriedRations"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootcontainer[@name='munitions']">
+    <item group="groupFoodDriedRations"/>
+  </append>
+
+  <append xpath="/lootcontainers/lootcontainer[@name='shamwaySafe']">
+    <item group="groupFoodDriedRations"/>
   </append>
 
 </configs>

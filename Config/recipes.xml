@@ -109,9 +109,10 @@
 
         <!-- Complex meat stew recipe: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
         <recipe name="foodMeatStew" count="5" tags="perkMasterChef,learnable">
-            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+            <ingredient name="foodRawMeat" count="20"/>
+            <ingredient name="resourceAnimalFat" count="5"/>
             <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="1"/>
+            <ingredient name="drinkJarBoiledWater" count="5"/>
             <effect_group>
                 <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
             </effect_group>
