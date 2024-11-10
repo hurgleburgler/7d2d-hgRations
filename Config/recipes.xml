@@ -7,30 +7,7 @@
     - Crops/Vegetables: 5 water → 20 items (1:4 ratio)
     - Canned Goods: 5 water → 10 items (1:2 ratio)
     - Complex Recipes: 1 water → 5 items (plus other ingredients)
-    - Special Cases: Coffee (1:1), Creamer (1:1)
     -->
-
-    <!-- ================ -->
-    <!-- Dairy Products   -->
-    <!-- ================ -->
-
-    <!-- Basic milk: 5 water → 10 items (1:2 ratio) -->
-    <recipe name="drinkJarMilk" count="10" craft_area="campfire" craft_tool="toolCookingPot">
-        <ingredient name="resourcePowderedMilk" count="1" />
-        <ingredient name="drinkJarBoiledWater" count="5" />
-    </recipe>
-
-    <!-- Canned milk: 5 water → 10 items (1:2 ratio) -->
-    <recipe name="foodCanMilk" count="10" craft_area="campfire" craft_tool="toolCookingPot">
-        <ingredient name="resourcePowderedCreamer" count="1"/>
-        <ingredient name="drinkJarBoiledWater" count="5"/>
-    </recipe>
-
-    <!-- Creamer special case: 1 water → 1 item (1:1 ratio for concentrate) -->
-    <recipe name="drinkJarCreamer" count="1" craft_area="campfire" craft_tool="toolCookingPot">
-        <ingredient name="drinkJarMilk" count="2"/>
-        <ingredient name="drinkJarBoiledWater" count="1"/>
-    </recipe>
 
     <!-- ================ -->
     <!-- Basic Foods     -->
@@ -145,17 +122,6 @@
         <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
         <ingredient name="drinkJarBoiledWater" count="1"/>
     </recipe>
-
-    <!-- ================ -->
-    <!-- Special Cases   -->
-    <!-- ================ -->
-
-    <!-- Coffee: 10 water → 10 coffee (1:1 ratio preserved for balance) -->
-    <recipe name="drinkJarCoffee" count="10" craft_area="campfire" craft_tool="toolCookingPot">
-        <ingredient name="resourceInstantCoffee" count="1"/>
-        <ingredient name="drinkJarBoiledWater" count="10"/>
-    </recipe>
-
 </append>
 
 </hurgleburgler>
