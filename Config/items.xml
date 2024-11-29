@@ -20,7 +20,7 @@
       <property name="Material" value="MresourceCrop"/>
       <property name="FuelValue" value="5"/>
       <property name="EconomicValue" value="100"/>
-      <property name="Stacknumber" value="50"/>
+      <property name="Stacknumber" value="5"/>
 
       <property name="CraftingIngredientTime" value="15"/>
       <property name="Group" value="Food/Cooking,CFFood/Cooking"/>
