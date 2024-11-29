@@ -5,7 +5,7 @@
 
     <lootgroup name="groupFoodDriedRations">
       <item name="resourcePowderedEggs" count="1" loot_prob_template="verylow"/>
-      <item name="resourcePowderedHoney" count="1" loot_prob_template="verylow"/>
+      <!--<item name="resourcePowderedHoney" count="1" loot_prob_template="verylow"/>-->
       <item name="resourceFreezeDriedVegetableStew" count="1" loot_prob_template="verylow"/>
       <item name="resourceFreezeDriedBlueberries" count="1" loot_prob_template="verylow"/>
       <item name="resourceFreezeDriedPotato" count="1" loot_prob_template="low"/>

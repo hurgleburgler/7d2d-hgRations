@@ -1,143 +1,685 @@
 <hurgleburgler>
 
-    <append xpath="/recipes">
-        <!--
-        Recipe Water Ratio Standards:
-        - Basic Foods/Drinks: 5 water → 10 items (1:2 ratio)
-        - Crops/Vegetables: 5 water → 20 items (1:4 ratio)
-        - Canned Goods: 5 water → 10 items (1:2 ratio)
-        - Complex Recipes: 1 water → 5 items (plus other ingredients)
-        -->
+  <append xpath="/recipes">
+    <!--
+    Recipe Water Ratio Standards:
+    - Basic Foods/Drinks: 5 water → 10 items (1:2 ratio)
+    - Crops/Vegetables: 5 water → 20 items (1:4 ratio)
+    - Canned Goods: 5 water → 10 items (1:2 ratio)
+    - Complex Recipes: 1 water → 5 items (plus other ingredients)
+    -->
 
-        <!-- ================ -->
-        <!-- Basic Foods     -->
-        <!-- ================ -->
+    <!-- ================ -->
+    <!-- Basic Foods      -->
+    <!-- ================ -->
 
-        <!-- Basic eggs: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodEgg" count="10">
-            <ingredient name="resourcePowderedEggs" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Basic eggs with boiled water -->
+    <recipe name="foodEgg" count="10" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourcePowderedEggs" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Honey: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodHoney" count="5">
-            <ingredient name="resourcePowderedHoney" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Basic eggs with boiled water at campfire -->
+    <recipe name="foodEgg" count="10" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourcePowderedEggs" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Raw meat: 5 water → 10 items (1:2 ratio) -->
-        <recipe name="foodRawMeat" count="10">
-            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Basic eggs with mineral water -->
+    <recipe name="foodEgg" count="14" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourcePowderedEggs" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- ================ -->
-        <!-- Crops/Vegetables -->
-        <!-- ================ -->
+    <!-- Basic eggs with mineral water at campfire -->
+    <recipe name="foodEgg" count="14" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourcePowderedEggs" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Potato: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropPotato" count="20">
-            <ingredient name="resourceFreezeDriedPotato" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Honey with boiled water -->
+    <recipe name="foodHoney" count="5" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourcePowderedHoney" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Yucca: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropYuccaFruit" count="20">
-            <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Honey with boiled water campfire -->
+    <recipe name="foodHoney" count="5" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourcePowderedHoney" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Blueberries: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropBlueberries" count="20">
-            <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Honey with mineral water -->
+    <recipe name="foodHoney" count="7" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourcePowderedHoney" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Mushrooms: 5 water → 20 items (1:4 ratio for crops) -->
-        <recipe name="foodCropMushrooms" count="20">
-            <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-        </recipe>
+    <!-- Honey with mineral water campfire -->
+    <recipe name="foodHoney" count="7" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourcePowderedHoney" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- ================ -->
-        <!-- Canned Foods    -->
-        <!-- ================ -->
+    <!-- Raw meat with boiled water -->
+    <recipe name="foodRawMeat" count="10" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Canned pasta: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPasta" count="10">
-            <ingredient name="resourceBoxOfRamen" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <ingredient name="drinkCanEmpty" count="10"/>
-        </recipe>
+    <!-- Raw meat with boiled water campfire -->
+    <recipe name="foodRawMeat" count="10" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Canned peas: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPeas" count="10">
-            <ingredient name="resourceFreezeDriedPeas" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <ingredient name="drinkCanEmpty" count="10"/>
-        </recipe>
+    <!-- Raw meat with mineral water -->
+    <recipe name="foodRawMeat" count="14" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Canned pears: 5 water → 10 items (1:2 ratio for canned goods) -->
-        <recipe name="foodCanPears" count="10">
-            <ingredient name="resourceFreezeDriedPears" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <ingredient name="drinkCanEmpty" count="10"/>
-        </recipe>
+    <!-- Raw meat with mineral water campfire -->
+    <recipe name="foodRawMeat" count="14" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- ================ -->
-        <!-- Complex Recipes -->
-        <!-- ================ -->
+    <!-- ================ -->
+    <!-- Crops/Vegetables -->
+    <!-- ================ -->
 
-        <!-- Basic rehydrated vegetable stew: 5 water → 20 items (1:4 ratio) -->
-        <recipe name="foodVegetableStew" count="20" tags="perkMasterChef,learnable">
-            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <effect_group>
-                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
-            </effect_group>
-        </recipe>
+    <!-- Potato with boiled water -->
+    <recipe name="foodCropPotato" count="20" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPotato" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Basic rehydrated meat stew: 5 water → 20 items (1:4 ratio to match other dehydrated foods) -->
-        <recipe name="foodMeatStew" count="20" tags="perkMasterChef,learnable">
-            <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
-            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <effect_group>
-                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
-            </effect_group>
-        </recipe>
+    <!-- Potato with boiled water with campfire -->
+    <recipe name="foodCropPotato" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPotato" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Complex meat stew recipe: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodMeatStew" count="5" tags="perkMasterChef,learnable">
-            <ingredient name="foodRawMeat" count="20"/>
-            <ingredient name="resourceAnimalFat" count="5"/>
-            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="5"/>
-            <effect_group>
-                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
-            </effect_group>
-        </recipe>
+    <!-- Potato with mineral water -->
+    <recipe name="foodCropPotato" count="28" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPotato" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Hobo stew: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodHoboStew" count="5" tags="perkMasterChef,learnable">
-            <ingredient name="foodRottingFlesh" count="5"/>
-            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="resourceAnimalFat" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="1"/>
-            <effect_group>
-                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
-            </effect_group>
-        </recipe>
+    <!-- Potato with mineral water with campfire -->
+    <recipe name="foodCropPotato" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPotato" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
 
-        <!-- Sham chowder: 1 water → 5 items (complex recipe ratio) plus additional ingredients -->
-        <recipe name="foodShamChowder" count="5" tags="perkMasterChef,learnable">
-            <ingredient name="foodCanSham" count="5"/>
-            <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
-            <ingredient name="drinkJarBoiledWater" count="1"/>
-            <effect_group>
-                <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
-            </effect_group>
-        </recipe>
-    </append>
+    <!-- Yucca with boiled water -->
+    <recipe name="foodCropYuccaFruit" count="20" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Yucca with boiled water with campfire -->
+    <recipe name="foodCropYuccaFruit" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Yucca with mineral water -->
+    <recipe name="foodCropYuccaFruit" count="28" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Yucca with mineral water with campfire -->
+    <recipe name="foodCropYuccaFruit" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedYuccaFruit" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Blueberries with boiled water -->
+    <recipe name="foodCropBlueberries" count="20" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Blueberries with boiled water with campfire -->
+    <recipe name="foodCropBlueberries" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Blueberries with mineral water -->
+    <recipe name="foodCropBlueberries" count="28" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Blueberries with mineral water with campfire -->
+    <recipe name="foodCropBlueberries" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedBlueberries" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Mushrooms with boiled water -->
+    <recipe name="foodCropMushrooms" count="20" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Mushrooms with boiled water with campfire -->
+    <recipe name="foodCropMushrooms" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Mushrooms with mineral water -->
+    <recipe name="foodCropMushrooms" count="28" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Mushrooms with mineral water with campfire -->
+    <recipe name="foodCropMushrooms" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedMushrooms" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- ================ -->
+    <!-- Canned Foods    -->
+    <!-- ================ -->
+
+    <!-- Canned pasta with boiled water -->
+    <recipe name="foodCanPasta" count="10" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceBoxOfRamen" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pasta with boiled water with campfire -->
+    <recipe name="foodCanPasta" count="10" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceBoxOfRamen" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pasta with mineral water -->
+    <recipe name="foodCanPasta" count="14" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceBoxOfRamen" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pasta with mineral water with campfire -->
+    <recipe name="foodCanPasta" count="14" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceBoxOfRamen" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned peas with boiled water -->
+    <recipe name="foodCanPeas" count="10" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPeas" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned peas with boiled water with campfire -->
+    <recipe name="foodCanPeas" count="10" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPeas" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned peas with mineral water -->
+    <recipe name="foodCanPeas" count="14" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPeas" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned peas with mineral water with campfire -->
+    <recipe name="foodCanPeas" count="14" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPeas" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pears with boiled water -->
+    <recipe name="foodCanPears" count="10" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPears" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pears with boiled water with campfire -->
+    <recipe name="foodCanPears" count="10" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPears" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="10"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pears with mineral water -->
+    <recipe name="foodCanPears" count="14" craft_time="75" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPears" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Canned pears with mineral water with campfire -->
+    <recipe name="foodCanPears" count="14" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+      <ingredient name="resourceFreezeDriedPears" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <ingredient name="drinkCanEmpty" count="14"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- ================ -->
+    <!-- Complex Recipes -->
+    <!-- ================ -->
+
+    <!-- Basic rehydrated vegetable stew with boiled water -->
+    <recipe name="foodVegetableStew" count="20" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated vegetable stew with boiled water with campfire -->
+    <recipe name="foodVegetableStew" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated vegetable stew with mineral water -->
+    <recipe name="foodVegetableStew" count="28" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated vegetable stew with mineral water with campfire -->
+    <recipe name="foodVegetableStew" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated meat stew with boiled water -->
+    <recipe name="foodMeatStew" count="20" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated meat stew with boiled water with campfire -->
+    <recipe name="foodMeatStew" count="20" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated meat stew with mineral water -->
+    <recipe name="foodMeatStew" count="28" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Basic rehydrated meat stew with mineral water with campfire -->
+    <recipe name="foodMeatStew" count="28" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="resourceFreezeDriedDicedMeat" count="1"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Complex meat stew recipe with raw meat -->
+    <recipe name="foodMeatStew" count="5" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodRawMeat" count="20"/>
+      <ingredient name="resourceAnimalFat" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Complex meat stew recipe with raw meat with campfire -->
+    <recipe name="foodMeatStew" count="5" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodRawMeat" count="20"/>
+      <ingredient name="resourceAnimalFat" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Complex meat stew recipe with raw meat and mineral water -->
+    <recipe name="foodMeatStew" count="7" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodRawMeat" count="20"/>
+      <ingredient name="resourceAnimalFat" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Complex meat stew recipe with raw meat and mineral water with campfire -->
+    <recipe name="foodMeatStew" count="7" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodRawMeat" count="20"/>
+      <ingredient name="resourceAnimalFat" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="5"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-1" tags="foodRawMeat"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Hobo stew -->
+    <recipe name="foodHoboStew" count="5" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodRottingFlesh" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="resourceAnimalFat" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Hobo stew with campfire -->
+    <recipe name="foodHoboStew" count="5" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodRottingFlesh" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="resourceAnimalFat" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Hobo stew with mineral water -->
+    <recipe name="foodHoboStew" count="7" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodRottingFlesh" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="resourceAnimalFat" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Hobo stew with mineral water with campfire -->
+    <recipe name="foodHoboStew" count="7" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodRottingFlesh" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="resourceAnimalFat" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Sham chowder -->
+    <recipe name="foodShamChowder" count="5" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodCanSham" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Sham chowder with campfire -->
+    <recipe name="foodShamChowder" count="5" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodCanSham" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarBoiledWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarBoiledWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarBoiledWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Sham chowder with mineral water -->
+    <recipe name="foodShamChowder" count="7" craft_time="75" tags="perkMasterChef,learnable">
+      <ingredient name="foodCanSham" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+
+    <!-- Sham chowder with mineral water with campfire -->
+    <recipe name="foodShamChowder" count="7" craft_time="38" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+      <ingredient name="foodCanSham" count="5"/>
+      <ingredient name="resourceFreezeDriedVegetableStew" count="1"/>
+      <ingredient name="drinkJarPureMineralWater" count="1"/>
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="4,5" operation="base_add" value="-2" tags="foodRottingFlesh"/>
+        <passive_effect name="CraftingIngredientCount" level="4" operation="base_add" value="-1" tags="drinkJarPureMineralWater"/>
+        <passive_effect name="CraftingIngredientCount" level="5" operation="base_add" value="-2" tags="drinkJarPureMineralWater"/>
+      </effect_group>
+    </recipe>
+  </append>
 
 </hurgleburgler>
